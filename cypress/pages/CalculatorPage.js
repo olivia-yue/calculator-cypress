@@ -10,7 +10,7 @@ class CalculatorPage {
         cy.get('#operator').select(operator)
         cy.get('iframe').then(($iframe) => {
             const doc = $iframe.contents()
-            cy.wrap(doc.find('button#calculate')).click()
+            cy.wrap(doc.find('#calculate')).click()
         })
     }
 
