@@ -1,0 +1,25 @@
+{
+  "name": "calculator-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run --spec \"**/*.feature\"",
+    "test:all": "cypress run --spec \"**/*.features\"",
+    "report": "mochawesome-merge 'cypress/reports/*.json' > mochawesome.json && marge mochawesome.json"
+  },
+  "author": "yiqun.yue",
+  "devDependencies": {
+    "cypress": "^7.2.0",
+    "cypress-cucumber-preprocessor": "^4.1.0",
+    "mocha": "^8.3.2",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}

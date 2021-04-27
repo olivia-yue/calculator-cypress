@@ -1,0 +1,12 @@
+{
+    "baseUrl": "https://calculator-web.azurewebsites.net/",
+    "testFiles": "**/*.{feature,features}",
+    "video": false,
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+    }
+}
