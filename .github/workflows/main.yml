@@ -27,7 +27,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          command: npm run test:all
+          command: npm run test
       - name: Generate reports
         if: ${{ always() }}
         uses: cypress-io/github-action@v2
