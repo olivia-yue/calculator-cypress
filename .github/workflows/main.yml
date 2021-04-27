@@ -11,17 +11,7 @@ on:
 jobs:
   Execute-UI-Automation:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    name: Tests on Node v${{ matrix.node }}
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
-      - run: node -v
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
@@ -44,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mochawesome-report
-          path: build/reports/pretty/cucumber-html-reports/
+          path: mochawesome-report/ 
