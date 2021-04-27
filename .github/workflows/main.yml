@@ -1,0 +1,47 @@
+name: Calculator UI automation
+
+on:
+  push:
+    branches-ignore:
+      - 'experiment/**'
+    paths-ignore:
+      - '**/README.md'
+  workflow_dispatch:
+  
+jobs:
+  Execute-UI-Automation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 15.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    name: Tests on Node v${{ matrix.node }}
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node -v
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          spec: cypress/integration/**/*.features
+      - name: Generate reports
+        if: ${{ always() }}
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run report
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - name: Upload mochawesome report
+        if: ${{ always() }}  #always upload cucumber report
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: build/reports/pretty/cucumber-html-reports/
