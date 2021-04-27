@@ -6,8 +6,9 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test": "cypress run --spec \"**/*.feature\"",
-    "test:all": "cypress run --spec \"**/*.features\"",
+    "clean": "rm -rf cypress/reports && rm -rf mochawesome*",
+    "test": "rm -rf cypress/reports && rm -rf mochawesome* && cypress run --spec \"**/*.feature\"",
+    "test:all": "rm -rf cypress/reports && rm -rf mochawesome* && cypress run --spec \"**/*.features\"",
     "report": "mochawesome-merge 'cypress/reports/*.json' > mochawesome.json && marge mochawesome.json"
   },
   "author": "yiqun.yue",

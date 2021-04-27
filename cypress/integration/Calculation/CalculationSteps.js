@@ -6,7 +6,7 @@ import CalculatorPage from '../../pages/CalculatorPage'
 const calculatorPage = new CalculatorPage()
 
 Given('I have opened the calculator homepage', () => {
-  cy.visit('/').title().should('contains', 'Simple Calculator')
+  calculatorPage.visit().title().should('contains', 'Simple Calculator')
 })
 
 When('I input {} and {} and choose the {} to perform a calculation', (leftNum, rightNum, operator) => {

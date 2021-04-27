@@ -1,8 +1,7 @@
 class CalculatorPage {
 
     visit(){
-        cy.visit('/')
-        return this
+        return cy.visit('/')
     }
 
     doCalculation(leftNum, rightNum, operator){
